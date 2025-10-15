@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linux Messenger</title>
+    <style>
+        body { font-family: Arial; background-color: #f2f2f2; padding:20px;}
+        form { margin-bottom: 20px;}
+        input[text=text] { width:70%; padding:10px; }
+        input[type=submit] {padding: 10px;}
+        .message { background: #fff; padding: 10px; margin-bottom: 10px; border-radius: 5px;}
+        .timestamp { font-size:0.8em; color:#fff;}
+    </style>
+</head>
+
+<body>
+
+    <h2>Linux Messenger</h2>
+    <form method="POST">
+        <input type="text" name="message" placeholder="Type a message..."required>
+        <input type="submit" value="send">
+    </form>
+
+{% for msg in messages %}
+<div class="message">
+    <div>{{ msg.content }}</div>
+    <div class="timestamp">{{msg.timestamp.strftime('%Y-%m-%d %H:%M:%S')}} </div>
+</div> 
+{% endfor %}   
+</body>
+</html>
